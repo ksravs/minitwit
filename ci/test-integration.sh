@@ -13,7 +13,7 @@ DOCKER_IMG="${DOCKER_IMG:-karlkfi/minitwit}"
 
 COOKIE_JAR="cookies-$(date | md5sum | head -c 10).txt"
 
-CONTAINER_ID="$(docker run -d "${DOCKER_IMG}")"
+CONTAINER_ID="$(docker run -d --env-file=minitwit.env "${DOCKER_IMG}")"
 
 function cleanup {
   rm -f "${COOKIE_JAR}"
